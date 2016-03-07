@@ -20,7 +20,7 @@ from pprint import pprint
 
 #------------------------------------------------------------------------------
 # make a list for all company shares
-companies = ["BOA", "C", "IBM", "AAPL", "GE", "T", "MCD", "NKE", "TWTR", "TSLA"]
+companies = ["BAC", "C", "IBM", "AAPL", "GE", "T", "MCD", "NKE", "TWTR", "TSLA"]
 
 # store output in a list method 1
 # shares = [yahoo_finance.Share(company) for company in companies]
@@ -32,10 +32,12 @@ for company in companies:
 
 
 # write stock output data into json files
+companyData = {}
 with open('output.json', 'w') as outfile:
-    for i in shares:
-        data = i.get_historical('2015-03-05', '2016-03-05')
-        json.dump(data, outfile)
+    for i, share in enumerate(shares):
+        companyData[companies[i]] = share.get_historical('2015-03-05', '2016-03-05')
+    json.dump(companyData, outfile)
+
 
 
 
