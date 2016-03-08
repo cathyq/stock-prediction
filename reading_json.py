@@ -1,7 +1,7 @@
 import json
 companies = ["BAC", "C", "IBM", "AAPL", "GE", "T", "MCD", "NKE", "TWTR", "TSLA"]
 
-# generate a dataset with company name, date, and close price
+# generate a json data set with variable Company, Date, and Close
 with open("output.json") as json_file:
     data = json.load(json_file)
     for company in companies:
@@ -9,6 +9,5 @@ with open("output.json") as json_file:
             date = dailyStock.get("Date")
             close = dailyStock.get("Close")
             print(company, date, close)
-
 
 
